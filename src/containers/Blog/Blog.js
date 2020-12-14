@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom'
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
+import FullPost from './FullPost/FullPost'
 import './Blog.css';
 
 class Blog extends Component {
@@ -33,8 +34,11 @@ class Blog extends Component {
               {/* <Route path='/' exact render={() => <h1>Home</h1>} />
               <Route path='/' render={() => <h1>Home 2</h1>} /> */}
 
+              {/* // The order of the rouetes is important, in this case if the url
+                    is /1 it could enter also into /new-post, that's why we set /new-post first */}
               <Route path='/' exact component={Posts} />
               <Route path='/new-post' component={NewPost} />
+              <Route path='/:postId' exact component={FullPost} />
             </div>
         );
     }
