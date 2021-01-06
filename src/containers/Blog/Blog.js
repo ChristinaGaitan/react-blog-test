@@ -20,7 +20,7 @@ class Blog extends Component {
                       color: 'red',
                       textDecoration: 'underline' }} to='/' exact>Home</NavLink></li> */}
 
-                    <li><NavLink to='/' exact>Home</NavLink></li>
+                    <li><NavLink to='/' exact>Posts</NavLink></li>
                     <li><NavLink to={{
                         // pathname: this.props.match.url + '/new-post', // Use this to build a relative path
                         pathname: '/new-post', // This is an absolute path
