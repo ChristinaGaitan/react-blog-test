@@ -18,6 +18,7 @@ class FullPost extends Component {
 
   componentDidMount() {
     const { postId } = this.props.match.params
+    // console.log('============= fullpost', postId)
     if (postId) {
       if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== postId)) {
         axios.get(`/posts/${postId}`).then(
