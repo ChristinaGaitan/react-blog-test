@@ -9,18 +9,24 @@ class FullPost extends Component {
   }
 
   deletePostHandler = () => {
-    axios.delete(`/posts/${this.props.id}`).then(
+    const { postId } = this.props.match.params
+
+    axios.delete(`/posts/${postId}`).then(
       response => {
         console.log('FullPost#: ', response)
       }
     )
   }
 
-  componentDidMount() {
+  lodadData() {
     const { postId } = this.props.match.params
     // console.log('============= fullpost', postId)
+
     if (postId) {
-      if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== postId)) {
+      // postId is an string
+      // this.state.loadedPost.id is a number
+      // that's why I cannot use strict comparison or use +postId to convert it to number
+      if(!this.state.loadedPost || (this.state.loadedPost && (this.state.loadedPost.id !== +postId))) {
         axios.get(`/posts/${postId}`).then(
           response => {
             this.setState({loadedPost: response.data})
@@ -29,6 +35,15 @@ class FullPost extends Component {
       }
     }
   }
+
+  componentDidMount() {
+    this.lodadData();
+  }
+
+  componentDidUpdate() {
+    this.lodadData();
+  }
+
     render () {
         const { postId } = this.props.match.params
 
