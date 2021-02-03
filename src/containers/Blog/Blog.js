@@ -47,7 +47,13 @@ class Blog extends Component {
                     null
                 }
                 <Route path='/posts' component={Posts} />
-                <Redirect from='/' to='/posts' />
+                {/* To catch unknown paths, it does not work with route '/'
+                because route '/' catchs everything */}
+                {/* <Route render={() => {
+                  return <h1>Not found</h1>
+                }} /> */}
+
+                {/* <Redirect from='/' to='/posts' /> */}
                 {/* <Route path='/' component={Posts} /> */}
               </Switch>
             </div>
