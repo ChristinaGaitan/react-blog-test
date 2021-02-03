@@ -14,7 +14,7 @@ class Posts extends Component {
   postSelectdHandler = (id) => {
     // this.setState({selectedPostId: id})
     // console.log('======= id', id)
-    this.props.history.push({pathname: '/' + id})
+    this.props.history.push({pathname: '/posts/' + id})
   }
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class Posts extends Component {
           { posts }
         </section>
 
-        <Route path='/:postId' exact component={FullPost} />
+        <Route path='/posts/:postId' exact component={FullPost} />
       </div>
     )
   }
