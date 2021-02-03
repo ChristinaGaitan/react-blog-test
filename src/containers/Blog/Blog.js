@@ -5,6 +5,10 @@ import NewPost from './NewPost/NewPost';
 import './Blog.css';
 
 class Blog extends Component {
+  state = {
+    auth: false
+  }
+
     render () {
         return (
             <div className='Blog'>
@@ -36,7 +40,12 @@ class Blog extends Component {
               {/* // The order of the rouetes is important, in this case if the url
                     is /1 it could enter also into /new-post, that's why we set /new-post first */}
               <Switch>
-                <Route path='/new-post' component={NewPost} />
+                {
+                  this.state.auth ?
+                    <Route path='/new-post' component={NewPost} />
+                  :
+                    null
+                }
                 <Route path='/posts' component={Posts} />
                 <Redirect from='/' to='/posts' />
                 {/* <Route path='/' component={Posts} /> */}
